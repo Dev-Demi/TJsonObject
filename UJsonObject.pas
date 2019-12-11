@@ -29,9 +29,9 @@ type
      function GetCurrentItem:TJsonObject<T>;
     public
     // обслуживание перечислителя, не для внешнего использования!
-    property Current:TJsonObject<T> read GetCurrentItem;
-    function MoveNext:boolean;
-    function GetEnumerator:TJsonObjectEnumerator<T>;{$IFDEF SUPPORTS_INLINE}inline;{$ENDIF}
+     property Current:TJsonObject<T> read GetCurrentItem;
+     function MoveNext:boolean;
+     function GetEnumerator:TJsonObjectEnumerator<T>;{$IFDEF SUPPORTS_INLINE}inline;{$ENDIF}
     // генерировать перечень файлов
     Constructor Create(EnumItem:TJsonObject<T>);
     Destructor Destroy;override;

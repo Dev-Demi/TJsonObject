@@ -10,6 +10,7 @@ type
   private
     fMyObjectList:TList<TJsonObject<T>>;
     fNode:T;
+    procedure MyFreeAndNil(var Obj);
   public
    Constructor Create;
    Destructor Free;
@@ -28,17 +29,14 @@ type
      fEnumItem:TJsonObject<T>;
      function GetCurrentItem:TJsonObject<T>;
     public
-    // обслуживание перечислителя, не для внешнего использования!
      property Current:TJsonObject<T> read GetCurrentItem;
      function MoveNext:boolean;
      function GetEnumerator:TJsonObjectEnumerator<T>;{$IFDEF SUPPORTS_INLINE}inline;{$ENDIF}
-    // генерировать перечень файлов
     Constructor Create(EnumItem:TJsonObject<T>);
     Destructor Destroy;override;
   end;
 
 implementation
- uses SysUtils;
 
 { TJsonObject<T> }
 
@@ -58,7 +56,7 @@ var
  tmpJsonObj: TJsonObject<T>;
 begin
  tmp:=Node;
- FreeAndNil(tmp);
+ MyFreeAndNil(tmp);
  while Storage.Count>0 do
  begin
   tmpJsonObj:=storage[0];
@@ -76,6 +74,16 @@ begin
  LSerializer.Formatting := TJsonFormatting.Indented;
  LSerializer.Populate(JsonText,self);
  LSerializer.Free
+end;
+
+//Copy FreeAndNil from SysUtils
+procedure TJsonObject<T>.MyFreeAndNil(var Obj);
+ var
+  Temp: TObject;
+begin
+  Temp := TObject(Obj);
+  Pointer(Obj) := nil;
+  Temp.Free;
 end;
 
 function TJsonObject<T>.SaveToText: String;

@@ -2,7 +2,7 @@
 Serialize, deserialize json object. Delphi
 
 # Save DATA 
-```
+```delphi
 {$M+}
   TMyTest = class(TObject)
   private
@@ -50,7 +50,7 @@ begin
 end;
 ```
 # LoadData
-```
+```delphi
 procedure TForm1.Button2Click(Sender: TObject);
 var
  SObj,item:TJsonObject<TMyTest>;

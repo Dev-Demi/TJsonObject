@@ -12,9 +12,6 @@ object Form1: TForm1
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
-  DesignSize = (
-    859
-    518)
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
@@ -27,11 +24,11 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object Memo1: TMemo
-    Left = 96
+    Left = 341
     Top = 0
-    Width = 763
-    Height = 518
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Width = 518
+    Height = 429
+    Align = alRight
     Lines.Strings = (
       'Memo1')
     ScrollBars = ssVertical
@@ -45,5 +42,20 @@ object Form1: TForm1
     Caption = 'Load'
     TabOrder = 2
     OnClick = Button2Click
+  end
+  object MultiLineMemo: TMemo
+    Left = 0
+    Top = 429
+    Width = 859
+    Height = 89
+    Align = alBottom
+    Lines.Strings = (
+      'Multuline test 1;'
+      'Multuline test 2;'
+      'Multuline test 3;'
+      'Multuline test 4;'
+      'Multuline test 5;'
+      '')
+    TabOrder = 3
   end
 end

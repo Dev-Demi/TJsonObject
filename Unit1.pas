@@ -11,6 +11,7 @@ type
     Button1: TButton;
     Memo1: TMemo;
     Button2: TButton;
+    MultiLineMemo: TMemo;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -49,7 +50,7 @@ begin
  SObj:=TJsonObject<TMyTest>.Create;
  // Create data object   // —оздаем объект, который хотим сохранить
   MyNodeTest:=TMyTest.Create;
-  MyNodeTest.MyStr:='Test JSON serialize, тест';
+  MyNodeTest.MyStr:=MultiLineMemo.Text; //multiline test // тест многострочного текста
   MyNodeTest.MyInt:=100;
  // Connect data object to Storage Object // ”казываем ссылку на него
  SObj.Node:=MyNodeTest;
